@@ -67,14 +67,44 @@
 		border-left: red;
 		border-style: inset;
 	}
-
+	.error{
+		display : none;
+	}
 	</style>
 	<script>
-	function greet(){
-		console.log("Welcome to taskManager");
-	}
+	
 	function init(){
-		document.getElementById("btnAddTask").addEventListener("click",greet);
+		document.getElementById("btnAddTask").addEventListener("click",onBtnAddTaskClick);
+		document.getElementById("btnRemoveCompleted").addEventListener("click",onBtnRemoveCompletedClick);
+		var allTasks = document.getElementById("olTaskList").children;
+		for(var i=allTasks.length-1;i>=0;i--){
+			allTasks[i].addEventListener("click",onTaskItemClick);
+		}
+	}
+	function onBtnRemoveCompletedClick(){
+		var allTasks = document.getElementById("olTaskList").children;
+		for(var i=allTasks.length-1;i>=0;i--){
+			if (allTasks[i].classList.contains("completed"))
+				allTasks[i].remove();
+		}
+	}
+	function onBtnAddTaskClick(){
+		var newTaskName = document.getElementById("txtTask").value;
+		var taskNameError = document.getElementById("taskNameError");
+
+		if (newTaskName !== ""){
+			var newTask = document.createElement("li");
+			newTask.innerHTML = newTaskName;
+			newTask.addEventListener("click",onTaskItemClick);
+			var olTaskList = document.getElementById("olTaskList");
+			olTaskList.appendChild(newTask);
+			taskNameError.style.display = "none";
+		} else {
+			taskNameError.style.display = "block";
+		}
+	}
+	function onTaskItemClick(){
+		this.classList.toggle("completed");
 	}
 	window.addEventListener("DOMContentLoaded",init);
 	</script>
@@ -89,8 +119,11 @@
 		<span>Task :</span>
 		<input type="text" id="txtTask">
 		<input type="button" value="Add Task" id="btnAddTask">
-		<input type="button" value="Remove Completed">
-		<ol>
+		<input type="button" value="Remove Completed" id="btnRemoveCompleted">
+		<div id="taskNameError" class="error">
+			*Task name is required
+		</div>
+		<ol id="olTaskList">
 			<li>Learn JavaScript</li>
 			<li class="completed">Explore jQuery</li>
 			<li class="completed">Master CoffeeScript</li>
