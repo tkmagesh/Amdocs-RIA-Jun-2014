@@ -7,24 +7,23 @@
 	body {
 		margin: 0px;
 	}
-	h1{
+	.header{
 		margin-top: 0px;
-		margin-bottom: 0px;
+		margin-bottom: 10px;
 		padding : 15px 5px;
 		border-top: 2px solid blue;
 		border-bottom: 2px solid blue;
 		background-color: lightblue;
+	}
+	h1{
+		margin: 0px; 
 	}
 	#txtTask{
 		color : blue;
 		font-style: italic;
 		font-weight: bold;
 	}
-	.completed{
-		color : red;
-		font-style: italic;
-		text-decoration: line-through;
-	}
+	
 	.content{
 		margin-left: 5px;
 	}
@@ -34,11 +33,45 @@
 		font-size: 12px;
 		font-style: italic;
 	}
+	.footer{
+		position: absolute;
+		bottom: 0px;
+
+	}
+	.footer p{
+		margin: 3px;
+		font-size: 12px;
+		font-style: italic;
+	}
+	ol{
+		width: 50%;
+
+	}
+	li{
+		list-style: none;
+		background-color: rgb(235,235,235);
+		/* border: px rgb(68, 61, 61); */
+		border-style: outset;
+
+		margin: 5px;
+		padding: 5px;
+
+	}
+	li.completed{
+		background-color: rgb(242, 172, 172);
+		border-top: red;
+		border-left: red;
+		border-style: inset;
+	}
+
 	</style>
 </head>
 <body>
-	<h1>Task Manager</h1>
-	<p class="titleDescription">A simple application to make your life simple</p>
+	<div class="header">
+		<h1>Task Manager</h1>
+		<p class="titleDescription">A simple application to make your life simple</p>	
+	</div>
+	
 	<div class="content">
 		<span>Task :</span>
 		<input type="text" id="txtTask">
@@ -49,6 +82,9 @@
 			<li class="completed">Explore jQuery</li>
 			<li class="completed">Master CoffeeScript</li>
 		</ol>
+	</div>
+	<div class="footer">
+		<p>Copyright - Amdocs, 2014</p>
 	</div>
 </body>
 </html>
