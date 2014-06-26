@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax Demos</title>
+	<script src="jquery-1.11.1.js"></script>
+	<script>
+	$(function(){
+		$("pre").text("loaded @ " + new Date());
+		$("#btnGetHtml").click(function(){
+			/*$.get("partial.html",function(data){
+				$("#divHtmlPlaceholder").append(data);
+			},"html");*/
+
+			$("#divHtmlPlaceholder").load("partial.html");
+		});
+		$("#btnLoadScript").click(function(){
+			$.getScript("partialScript.js");
+		});
+	});
+	</script>
+</head>
+<body>
+	<h1>Ajax Demos</h1>
+	<pre> </pre>
+	<input type="button" value="Get Html" id="btnGetHtml">
+	<div id="divHtmlPlaceholder"></div>
+	<input type="button" value="Load Script" id="btnLoadScript">
+	<h3>Employees</h3>
+	<hr>
+	<input type="button" value="Get Employees" id="btnGetEmployees">
+	<div id="divEmployees"></div>
+</body>
+</html>

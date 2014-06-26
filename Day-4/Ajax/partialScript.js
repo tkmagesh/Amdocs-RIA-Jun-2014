@@ -1,0 +1,1 @@
+$("#btnLoadScript").attr("disabled",true);

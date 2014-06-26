@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Demo</title>
+	<script src="jquery-1.11.1.js"></script>
+	<style>
+	.highlight{
+		border : 2px solid red;
+	}
+	</style>
+	<script>
+	function highlight($obj){
+		$obj.addClass("highlight");
+	}
+	function reset(){
+		$("*").removeClass("highlight");
+	}
+	function greet(){
+	  $("#divMessage").html("HI " + $("#txtFirstName").val());
+	}
+	$(function(){
+		$("#btnGreet").click(greet);
+	});
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="txtFirstName" class="nameBox"><br>
+	<input type="text" name="" id="txtLastName" class="nameBox"><br>
+	<input type="text" name="" id="txtAge" class="numberbox"><br>
+	<input type="button" value="Greet" id="btnGreet">
+	<button>Reset</button>
+	<div id="divMessage"></div>	
+</body>
+</html>

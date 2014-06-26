@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task Manager</title>
+	<style>
+	body {
+		margin: 0px;
+	}
+	.header{
+		margin-top: 0px;
+		margin-bottom: 10px;
+		padding : 15px 5px;
+		border-top: 2px solid blue;
+		border-bottom: 2px solid blue;
+		background-color: lightblue;
+	}
+	h1{
+		margin: 0px; 
+	}
+	#txtTask{
+		color : blue;
+		font-style: italic;
+		font-weight: bold;
+	}
+
+	.dummy{
+		border-color: red;
+	}
+	
+	.content{
+		margin-left: 5px;
+	}
+	.titleDescription{
+		margin-top: 2px;
+		margin-left: 5px;
+		font-size: 12px;
+		font-style: italic;
+	}
+	.footer{
+		position: absolute;
+		bottom: 0px;
+
+	}
+	.footer p{
+		margin: 3px;
+		font-size: 12px;
+		font-style: italic;
+	}
+	ol{
+		width: 50%;
+
+	}
+	li{
+		list-style: none;
+		background-color: rgb(235,235,235);
+		/* border: px rgb(68, 61, 61); */
+		border-style: outset;
+
+		margin: 5px;
+		padding: 5px;
+
+	}
+	li.completed{
+		background-color: rgb(242, 172, 172);
+		border-top: red;
+		border-left: red;
+		border-style: inset;
+	}
+	.error{
+		display : none;
+	}
+	.divMessages{
+		position : absolute;
+		bottom: 0px;
+		right : 0px;
+		margin: 5px;
+		padding: 5px;
+		
+	}
+	.divMessage{
+		background-color: lightgray;
+		border:2px solid black;
+		border-radius: 3px;
+		margin: 2px;
+		padding : 5px;
+	}
+	</style>
+	<script src="jquery-1.11.1.js"></script>
+	<script>
+	
+	$(function(){
+		$("#btnAddTask").on("click", onBtnAddTaskClick);
+		$("#btnRemoveCompleted").click(onBtnRemoveCompletedClick);
+		$("#olTaskList").on("click","li", onTaskItemClick);
+		$("div.divMessage").hide();
+	});
+	function onBtnRemoveCompletedClick(){
+		$("#olTaskList > li.completed").fadeOut(100,function(){
+			$(this).remove();
+		});
+		displayMessage("Zero or more completed tasks are removed..!");
+	}
+	function onBtnAddTaskClick(){
+		$("<li></li>")
+			.html($("#txtTask").val())
+			.hide()
+			.prependTo("#olTaskList")
+			.slideDown('slow');
+		displayMessage("A new task is added..!");
+	}
+	function onTaskItemClick(){
+		$(this).toggleClass("completed");
+	}
+	function displayMessage(msg){
+		$("<div class='divMessage'></div>")
+			.appendTo("div.divMessages")
+			.hide()
+			.html(msg)
+			.slideDown(100)
+			.delay(5000)
+			.fadeOut(100,function(){
+				$(this).remove();
+			});
+	}
+	</script>
+</head>
+<body>
+	<div class="header">
+		<h1>Task Manager</h1>
+		<p class="titleDescription">A simple application to make your life simple</p>	
+	</div>
+	
+	<div class="content">
+		<span>Task :</span>
+		<input type="text" id="txtTask">
+		<input type="button" value="Add Task" id="btnAddTask">
+		<input type="button" value="Remove Completed" id="btnRemoveCompleted">
+		<div id="taskNameError" class="error">
+			*Task name is required
+		</div>
+		<ol id="olTaskList">
+			<li>Learn JavaScript</li>
+			<li class="completed">Explore jQuery</li>
+			<li class="completed">Master CoffeeScript</li>
+		</ol>
+	</div>
+	<div class="footer">
+		<p>Copyright - Amdocs, 2014</p>
+	</div>
+	
+	<div class="divMessages">
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Event Bubbling Demo</title>
+	<style type="text/css">
+		div{
+			margin: 20px;
+			padding: 20px;
+			border : 2px solid;
+		}
+		.div1{
+			border-color: blue;
+			background-color: lightblue;
+		}
+		.div2{
+			border-color: green;
+			background-color: lightgreen;
+		}
+		.div3{
+			border-color: red;
+			background-color: lightpink;
+		}
+		.div4{
+			border-color: yellow;
+			background-color: lightyellow;
+		}
+	</style>
+	<script>
+	window.addEventListener("DOMContentLoaded",function(){
+		var divs = document.getElementsByTagName("div");
+		for(var i=0;i<divs.length;i++)
+			divs[i].addEventListener("click",onItemClick);
+	});
+	function onItemClick(evt){
+		console.log(this,evt.srcElement);
+		console.log("============================================");
+		if (this.classList.contains("div2"))
+			evt.stopPropagation();
+	}
+	</script>
+</head>
+<body>
+	<div class="div1">Div-1
+		<div class="div2">Div-2
+			<div class="div3">Div-3
+				<div class="div4">Div-4</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
