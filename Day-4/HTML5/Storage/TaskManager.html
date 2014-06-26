@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task Manager</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="jquery-1.11.1.js"></script>
+	<script src="TaskManager.js"></script>
+</head>
+<body>
+	<div class="header">
+		<h1>Task Manager</h1>
+		<p class="titleDescription">A simple application to make your life simple</p>	
+	</div>
+	
+	<div class="content">
+		<span>Task :</span>
+		<input type="text" id="txtTask">
+		<input type="button" value="Add Task" id="btnAddTask">
+		<input type="button" value="Remove Completed" id="btnRemoveCompleted">
+		<div id="taskNameError" class="error">
+			*Task name is required
+		</div>
+		<ol id="olTaskList">
+			
+		</ol>
+	</div>
+	<div class="footer">
+		<p>Copyright - Amdocs, 2014</p>
+	</div>
+	
+	<div class="divMessages">
+		
+	</div>
+</body>
+</html>

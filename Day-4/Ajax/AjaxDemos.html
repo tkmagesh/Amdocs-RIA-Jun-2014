@@ -19,8 +19,7 @@
 			$.getScript("partialScript.js");
 		});
 		$("#btnGetEmployees").click(function(){
-			
-			$.getJSON("employees.json",function(response){
+			function handleXhrResponse(response){
 				/*
 				var html = [];
 				var employees = response.employees;
@@ -35,13 +34,18 @@
 				html.push("</table>");
 				$("#divEmployees").html(html.join(''));
 				*/
-				console.log(response);
 				var template = $("#employeesTemplate").html();
 				var templateFn = Handlebars.compile(template);
-				console.log(template);
 				var resultHTML = templateFn(response);
-				console.log(resultHTML);
 				$("#divEmployees").html(resultHTML);
+			}
+
+			//$.getJSON("employees.json", handleXhrResponse);
+			$.ajax({
+				url : "employees.json",
+				type : "get",
+				dataType : "json",
+				success : handleXhrResponse
 			});
 		});
 	});
