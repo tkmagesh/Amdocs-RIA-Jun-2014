@@ -1,0 +1,75 @@
+body {
+		margin: 0px;
+	}
+	
+	h1{
+		margin: 0px; 
+	}
+	#txtTask{
+		color : blue;
+		font-style: italic;
+		font-weight: bold;
+	}
+	
+
+	.dummy{
+		border-color: red;
+	}
+	
+	.content{
+		margin-left: 5px;
+	}
+	.titleDescription{
+		margin-top: 2px;
+		margin-left: 5px;
+		font-size: 12px;
+		font-style: italic;
+	}
+	.footer{
+		position: absolute;
+		bottom: 0px;
+
+	}
+	.footer p{
+		margin: 3px;
+		font-size: 12px;
+		font-style: italic;
+	}
+	ol{
+		width: 50%;
+
+	}
+	li{
+		list-style: none;
+		background-color: rgb(235,235,235);
+		/* border: px rgb(68, 61, 61); */
+		border-style: outset;
+
+		margin: 5px;
+		padding: 5px;
+
+	}
+	li.completed{
+		background-color: rgb(242, 172, 172);
+		border-top: red;
+		border-left: red;
+		border-style: inset;
+	}
+	.error{
+		display : none;
+	}
+	.divMessages{
+		position : absolute;
+		bottom: 0px;
+		right : 0px;
+		margin: 5px;
+		padding: 5px;
+		
+	}
+	.divMessage{
+		background-color: lightgray;
+		border:2px solid black;
+		border-radius: 3px;
+		margin: 2px;
+		padding : 5px;
+	}
