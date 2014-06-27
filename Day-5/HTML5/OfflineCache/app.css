@@ -73,3 +73,6 @@ body {
 		margin: 2px;
 		padding : 5px;
 	}
+	#divCacheUpdate{
+		display : none;
+	}

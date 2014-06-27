@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="app.manifest">
+<html lang="en" manifest="app.manifest" >
 <head>
 	<meta charset="UTF-8">
 	<title>Task Manager</title>
@@ -9,10 +9,15 @@
 	<script src="jquery-1.11.1.js"></script>
 	<script src="TaskStorage.js"></script>
 	<script src="TaskManager.js"></script>
+	<script>
+	$(applicationCache).bind("updateready",function(){
+		$("#divCacheUpdate").show();
+	})
+	</script>
 </head>
 <body>
 	<div class="header">
-		<h1>Task Manager - Ver 1.0</h1>
+		<h1>Task Manager - Ver 2.0</h1>
 		<p class="titleDescription">A simple application to make your life simple</p>	
 	</div>
 	
@@ -27,6 +32,10 @@
 		<ol id="olTaskList">
 			
 		</ol>
+	</div>
+	<div id="divCacheUpdate">
+		A new version of the application is available. Do you want to use it?
+		<input type="button" value=" Yes " id="btnYes"><input type="button" value="  No  " id="btnNo">
 	</div>
 	<div class="footer">
 		<p>Copyright - Amdocs, 2014</p>

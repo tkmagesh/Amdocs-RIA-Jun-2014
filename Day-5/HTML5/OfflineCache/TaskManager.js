@@ -5,7 +5,16 @@
 		$("#btnRemoveCompleted").click(onBtnRemoveCompletedClick);
 		$("#olTaskList").on("click","li", onTaskItemClick);
 		$("div.divMessage").hide();
+
 		storage.getAll().forEach(addTaskToUI);
+
+		//offline cache control events
+		$("#btnYes").click(function(){
+			window.location.reload();
+		});
+		$("#btnNo").click(function(){
+			$("#divCacheUpdate").hide();
+		});
 	});
 	function onBtnRemoveCompletedClick(){
 		$("#olTaskList > li.completed").fadeOut(100,function(){
